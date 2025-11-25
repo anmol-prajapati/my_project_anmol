@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - PowerGym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <!-- About Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About PowerGym</h1>
+            <p>Your premier destination for fitness and wellness</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2010, PowerGym has been at the forefront of fitness innovation. We believe that everyone deserves access to world-class fitness facilities and expert guidance to achieve their health and wellness goals.</p>
+                    <p>Our state-of-the-art facility spans over 15,000 square feet and features the latest in fitness technology, from high-tech cardio machines to Olympic-standard weightlifting equipment.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>24/7 Access Available</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Expert Personal Trainers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Modern Equipment</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Group Fitness Classes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="About PowerGym">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-item">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide an inclusive, supportive environment where individuals of all fitness levels can achieve their health and wellness goals through expert guidance, top-tier equipment, and innovative programs.</p>
+                </div>
+                <div class="mv-item">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading fitness destination that transforms lives by making health and fitness accessible, enjoyable, and sustainable for everyone in our community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Expert Trainers</h2>
+                <p>Certified professionals dedicated to your success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&dpr=1" alt="Trainer">
+                    </div>
+                    <h3>Mike Johnson</h3>
+                    <p>Head Trainer & Nutrition Specialist</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&dpr=1" alt="Trainer">
+                    </div>
+                    <h3>Sarah Williams</h3>
+                    <p>Yoga & Pilates Instructor</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/1431282/pexels-photo-1431282.jpeg?auto=compress&cs=tinysrgb&w=400&h=600&dpr=1" alt="Trainer">
+                    </div>
+                    <h3>David Chen</h3>
+                    <p>Strength & Conditioning Coach</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

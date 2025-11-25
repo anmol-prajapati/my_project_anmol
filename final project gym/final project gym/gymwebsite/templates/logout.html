@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - PowerGym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="auth-body">
+    <div class="logout-container">
+        <div class="logout-content">
+            <div class="logout-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h2>You've Been Logged Out</h2>
+            <p>Thanks for visiting PowerGym. Keep pushing your limits!</p>
+            <a href="{% url 'login' %}" class="auth-btn">Sign In Again</a>
+        </div>
+    </div>
+    <script>
+        // Auto redirect to login after 3 seconds
+        setTimeout(() => {
+            window.location.href = "{% url 'login' %}";
+        }, 3000);
+    </script>
+</body>
+</html>

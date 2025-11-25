@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - PowerGym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <!-- Services Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive fitness solutions for every goal</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Personal Training">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Personal Training</h3>
+                        <p>One-on-one training sessions with certified personal trainers who will create customized workout plans tailored to your specific goals and fitness level.</p>
+                        <ul>
+                            <li>Customized workout plans</li>
+                            <li>Nutritional guidance</li>
+                            <li>Progress tracking</li>
+                            <li>Flexible scheduling</li>
+                        </ul>
+                        <div class="service-price">Starting from $80/session</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Group Classes">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Group Classes</h3>
+                        <p>Join our energetic group fitness classes led by experienced instructors. Great for motivation and meeting like-minded fitness enthusiasts.</p>
+                        <ul>
+                            <li>HIIT Training</li>
+                            <li>Zumba & Dance</li>
+                            <li>Spin Classes</li>
+                            <li>Boot Camp</li>
+                        </ul>
+                        <div class="service-price">Included in membership</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Yoga & Pilates">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-peace"></i>
+                        </div>
+                        <h3>Yoga & Pilates</h3>
+                        <p>Improve flexibility, balance, and mental well-being with our yoga and Pilates classes suitable for all levels from beginner to advanced.</p>
+                        <ul>
+                            <li>Hatha Yoga</li>
+                            <li>Vinyasa Flow</li>
+                            <li>Hot Yoga</li>
+                            <li>Mat Pilates</li>
+                        </ul>
+                        <div class="service-price">$25/class</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Nutrition Consulting">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Nutrition Consulting</h3>
+                        <p>Get expert nutritional guidance from our certified nutritionists to complement your fitness routine and achieve optimal results.</p>
+                        <ul>
+                            <li>Meal planning</li>
+                            <li>Dietary assessments</li>
+                            <li>Supplement advice</li>
+                            <li>Weight management</li>
+                        </ul>
+                        <div class="service-price">$60/consultation</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Recovery Services">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Recovery & Wellness</h3>
+                        <p>Enhance your recovery with our wellness services including massage therapy, sauna, and cryotherapy for optimal muscle recovery.</p>
+                        <ul>
+                            <li>Sports massage</li>
+                            <li>Sauna & Steam room</li>
+                            <li>Cryotherapy</li>
+                            <li>Stretching assistance</li>
+                        </ul>
+                        <div class="service-price">$45-$120/service</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/4164828/pexels-photo-4164828.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Athletic Performance">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3>Athletic Performance</h3>
+                        <p>Specialized training programs for athletes looking to enhance their performance in specific sports or competitive activities.</p>
+                        <ul>
+                            <li>Sport-specific training</li>
+                            <li>Agility & speed work</li>
+                            <li>Injury prevention</li>
+                            <li>Performance testing</li>
+                        </ul>
+                        <div class="service-price">$100/session</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership CTA -->
+    <section class="membership-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Choose the membership plan that fits your lifestyle and start your transformation today</p>
+                <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

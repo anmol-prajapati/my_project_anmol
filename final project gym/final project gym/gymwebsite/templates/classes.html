@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - PowerGym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <!-- Classes Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Fitness Classes</h1>
+            <p>Join our exciting group fitness classes and stay motivated</p>
+        </div>
+    </section>
+
+    <!-- Class Schedule -->
+    <section class="schedule-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Weekly Class Schedule</h2>
+                <p>Find the perfect class that fits your schedule</p>
+            </div>
+            
+            <div class="schedule-tabs">
+                <button class="tab-btn active" data-day="monday">Monday</button>
+                <button class="tab-btn" data-day="tuesday">Tuesday</button>
+                <button class="tab-btn" data-day="wednesday">Wednesday</button>
+                <button class="tab-btn" data-day="thursday">Thursday</button>
+                <button class="tab-btn" data-day="friday">Friday</button>
+                <button class="tab-btn" data-day="saturday">Saturday</button>
+                <button class="tab-btn" data-day="sunday">Sunday</button>
+            </div>
+
+            <div class="schedule-content">
+                <div class="day-schedule active" id="monday">
+                    <div class="class-item">
+                        <div class="class-time">6:00 AM</div>
+                        <div class="class-info">
+                            <h4>Morning HIIT</h4>
+                            <p>High-intensity interval training</p>
+                            <span class="instructor">with Sarah Williams</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">9:00 AM</div>
+                        <div class="class-info">
+                            <h4>Yoga Flow</h4>
+                            <p>Vinyasa style yoga for all levels</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">6:00 PM</div>
+                        <div class="class-info">
+                            <h4>Strength Training</h4>
+                            <p>Full body strength workout</p>
+                            <span class="instructor">with Mike Johnson</span>
+                        </div>
+                        <div class="class-duration">50 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">7:30 PM</div>
+                        <div class="class-info">
+                            <h4>Zumba Dance</h4>
+                            <p>High-energy dance workout</p>
+                            <span class="instructor">with Lisa Martinez</span>
+                        </div>
+                        <div class="class-duration">55 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="tuesday">
+                    <div class="class-item">
+                        <div class="class-time">6:30 AM</div>
+                        <div class="class-info">
+                            <h4>Spin Class</h4>
+                            <p>High-energy cycling workout</p>
+                            <span class="instructor">with David Chen</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">10:00 AM</div>
+                        <div class="class-info">
+                            <h4>Pilates Mat</h4>
+                            <p>Core strengthening and flexibility</p>
+                            <span class="instructor">with Sarah Williams</span>
+                        </div>
+                        <div class="class-duration">50 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">6:00 PM</div>
+                        <div class="class-info">
+                            <h4>Boot Camp</h4>
+                            <p>Military-style fitness training</p>
+                            <span class="instructor">with Mike Johnson</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="wednesday">
+                    <div class="class-item">
+                        <div class="class-time">6:00 AM</div>
+                        <div class="class-info">
+                            <h4>Morning Yoga</h4>
+                            <p>Gentle start to your day</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">12:00 PM</div>
+                        <div class="class-info">
+                            <h4>Lunch HIIT</h4>
+                            <p>Quick and effective workout</p>
+                            <span class="instructor">with Sarah Williams</span>
+                        </div>
+                        <div class="class-duration">30 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">7:00 PM</div>
+                        <div class="class-info">
+                            <h4>CrossFit</h4>
+                            <p>Functional fitness training</p>
+                            <span class="instructor">with David Chen</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="thursday">
+                    <div class="class-item">
+                        <div class="class-time">6:30 AM</div>
+                        <div class="class-info">
+                            <h4>Spin Class</h4>
+                            <p>High-energy cycling workout</p>
+                            <span class="instructor">with Lisa Martinez</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">9:30 AM</div>
+                        <div class="class-info">
+                            <h4>Senior Fitness</h4>
+                            <p>Low-impact exercise for seniors</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">6:00 PM</div>
+                        <div class="class-info">
+                            <h4>Strength & Conditioning</h4>
+                            <p>Build strength and power</p>
+                            <span class="instructor">with Mike Johnson</span>
+                        </div>
+                        <div class="class-duration">55 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="friday">
+                    <div class="class-item">
+                        <div class="class-time">6:00 AM</div>
+                        <div class="class-info">
+                            <h4>HIIT Cardio</h4>
+                            <p>End the week strong</p>
+                            <span class="instructor">with Sarah Williams</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">10:00 AM</div>
+                        <div class="class-info">
+                            <h4>Yoga & Meditation</h4>
+                            <p>Relaxation and mindfulness</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">75 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">7:00 PM</div>
+                        <div class="class-info">
+                            <h4>Dance Fitness</h4>
+                            <p>Fun Friday night workout</p>
+                            <span class="instructor">with Lisa Martinez</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="saturday">
+                    <div class="class-item">
+                        <div class="class-time">8:00 AM</div>
+                        <div class="class-info">
+                            <h4>Weekend Warrior</h4>
+                            <p>Full body weekend workout</p>
+                            <span class="instructor">with Mike Johnson</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">10:00 AM</div>
+                        <div class="class-info">
+                            <h4>Family Fitness</h4>
+                            <p>Workout with the whole family</p>
+                            <span class="instructor">with Sarah Williams</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">11:30 AM</div>
+                        <div class="class-info">
+                            <h4>Hot Yoga</h4>
+                            <p>Heated vinyasa flow</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">90 min</div>
+                    </div>
+                </div>
+
+                <div class="day-schedule" id="sunday">
+                    <div class="class-item">
+                        <div class="class-time">9:00 AM</div>
+                        <div class="class-info">
+                            <h4>Sunday Stretch</h4>
+                            <p>Gentle recovery session</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">60 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">11:00 AM</div>
+                        <div class="class-info">
+                            <h4>Aqua Fitness</h4>
+                            <p>Water-based exercise</p>
+                            <span class="instructor">with Lisa Martinez</span>
+                        </div>
+                        <div class="class-duration">45 min</div>
+                    </div>
+                    <div class="class-item">
+                        <div class="class-time">5:00 PM</div>
+                        <div class="class-info">
+                            <h4>Restorative Yoga</h4>
+                            <p>Deep relaxation and restoration</p>
+                            <span class="instructor">with Emma Davis</span>
+                        </div>
+                        <div class="class-duration">75 min</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Classes -->
+    <section class="popular-classes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Most Popular Classes</h2>
+                <p>Join our member favorites</p>
+            </div>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <div class="class-image">
+                        <img src="https://images.pexels.com/photos/3076509/pexels-photo-3076509.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="HIIT Class">
+                    </div>
+                    <div class="class-content">
+                        <h3>HIIT Training</h3>
+                        <p>High-intensity interval training that burns calories and builds strength in short, effective sessions.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-fire"></i> High Intensity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-image">
+                        <img src="https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Yoga Class">
+                    </div>
+                    <div class="class-content">
+                        <h3>Vinyasa Yoga</h3>
+                        <p>Flow through poses with breath awareness, building strength, flexibility, and inner calm.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                            <span><i class="fas fa-leaf"></i> All Levels</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-image">
+                        <img src="https://images.pexels.com/photos/3253501/pexels-photo-3253501.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=1" alt="Spin Class">
+                    </div>
+                    <div class="class-content">
+                        <h3>Spin Classes</h3>
+                        <p>High-energy indoor cycling with motivating music and inspiring instructors to push your limits.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-bicycle"></i> Cardio Focus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'footer.html' %}
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
