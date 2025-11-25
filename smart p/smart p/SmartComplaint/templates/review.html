@@ -1,0 +1,73 @@
+{% include 'header.html' with title='Review' %}
+{% load static %}
+
+<!-- Hero Section -->
+<section class="py-5 gradient-bg text-black">
+    <div class="container">
+        <h1 class="display-5 fw-bold">User Reviews & Testimonials</h1>
+                <p class="lead">What our users say about the Smart Complaint Management System</p>
+        <hr style="border-top: 2px solid white;">
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-dark">
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'image/img6.jpg' %}" alt="User 1" class="rounded-circle mb-3" width="80" height="80">
+                        <h5 class="card-title">Priya Sharma</h5>
+                        <p class="text-muted small">Student</p>
+                        <p class="card-text">"The system is so simple to use! I raised a complaint and got updates immediately."</p>
+                        <div class="text-warning">
+                            ★★★★★
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'image/img5.jpg' %}" alt="User 2" class="rounded-circle mb-3" width="80" height="80">
+                        <h5 class="card-title">Ravi Kumar</h5>
+                        <p class="text-muted small">Resident</p>
+                        <p class="card-text">"Best platform for complaint management. I got fast resolution and full transparency."</p>
+                        <div class="text-warning">
+                            ★★★★☆
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'image/img8.jpg' %}" alt="User 3" class="rounded-circle mb-3" width="80" height="80">
+                        <h5 class="card-title">Anjali Verma</h5>
+                        <p class="text-muted small">IT Employee</p>
+                        <p class="card-text">"This system saved me hours of manual follow-ups. Highly recommend it!"</p>
+                        <div class="text-warning">
+                            ★★★★★
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 gradient-bg text-black text-center">
+    <div class="container">
+        <h2>Have feedback? We'd love to hear!</h2>
+        <p class="lead">Your review helps us improve the platform.</p>
+        <a href="{% url 'contact' %}" class="btn btn-light btn-lg mt-3">Share Your Review</a>
+    </div>
+</section>
+
+{% include 'footer.html' %}

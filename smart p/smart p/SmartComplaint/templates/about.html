@@ -1,0 +1,118 @@
+{% include 'header.html' with title='About' %}
+{% load static %}
+
+<!-- About Hero Section -->
+<section class="py-5 gradient-bg text-black">
+    <div class="container">
+        <h1 class="display-5 fw-bold">About Smart Complaint System</h1>
+        <p class="lead">Your voice. Your platform. Your solution.</p>
+        <hr style="border-top: 2px solid white;">
+    </div>
+</section>
+
+<!-- About Info -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-md-6">
+                <img src="https://plus.unsplash.com/premium_photo-1661517335128-2bcf290d58f6?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dGVhbXdvcmt8ZW58MHx8MHx8fDA%3D"
+                    alt="About Image" class="img-fluid rounded-4 shadow" />
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-3">Who We Are</h2>
+                <p>Smart Complaint Management System is a digital platform developed to simplify public grievance
+                    redressal. We aim to bring transparency, efficiency, and trust between users and authorities.
+                </p>
+                <p>Whether you're a student, employee, or citizen — our system ensures your voice is heard and
+                    resolved in time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="py-5 gradient-bg text-black">
+    <div class="container text-center">
+        <h2 class="mb-4">Our Mission</h2>
+        <hr style="border-top: 2px solid white;">
+        <p class="lead">To create a fast, secure, and transparent complaint redressal system that empowers
+            individuals and ensures real-time accountability.</p>
+    </div>
+</section>
+
+<!-- FAQs Section -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapse1" aria-expanded="true">
+                        How can I register a complaint?
+                    </button>
+                </h2>
+                <div id="faqCollapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Simply click on the 'Register Complaint' button, fill in the required details, and submit.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapse2">
+                        Can I track my complaint after submission?
+                    </button>
+                </h2>
+                <div id="faqCollapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, go to the 'Track Status' page and enter your complaint ID to view real-time progress.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faq3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faqCollapse3">
+                        Is my personal information secure?
+                    </button>
+                </h2>
+                <div id="faqCollapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Absolutely! All user data is encrypted and stored securely on our servers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="pt-5 pb-2 gradient-bg text-white">
+     <div class="container">
+        <h2 class="text-center mb-5">Meet Our Team</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-3 text-center">
+                <img src="https://plus.unsplash.com/premium_photo-1682144187125-b55e638cf286?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
+                    class="rounded-circle mb-3" width="120" height="120" alt="Team Member" />
+                <h5>Rohan kumar</h5>
+                <p class="text-muted">Frontend Developer</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="https://plus.unsplash.com/premium_photo-1672691612717-954cdfaaa8c5?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmVzc2lvbmFsJTIwd29mYW58ZW58MHx8MHx8fDA%3D"
+                    class="rounded-circle mb-3" width="120" height="120" alt="Team Member" />
+                <h5>Priya Kumari</h5>
+                <p class="text-muted">UI/UX Designer</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/048/001/516/small/indian-male-university-student-smiling-in-a-bright-corridor-embracing-education-and-confidence-photo.jpg"
+                    class="rounded-circle mb-3" width="120" height="120" alt="Team Member" />
+                <h5>Ravi Verma</h5>
+                <p class="text-muted">JS Developer</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}

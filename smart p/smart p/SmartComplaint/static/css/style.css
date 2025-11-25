@@ -1,0 +1,400 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* nav */
+.custom-navbar {
+  background: linear-gradient(45deg, #867777, #c6a1a1); /* Metallic Green */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link,
+.custom-navbar .nav-link i {
+  color: #000000 !important;  /* Bright Yellow */
+  font-weight: 500;
+  text-decoration: none !important;  /* Remove underline */
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar  {
+  color: #ffffff !important;  /* Light Yellow on hover/active */
+  text-decoration: none !important;  /* Still no underline */
+}
+
+
+
+
+.hero {
+    background: url('/image/img4.jpg') center center/cover no-repeat;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn-custom {
+    background-color: #0d6efd;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #084298;
+    transform: scale(1.05);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* cousrel */
+.carousel-item img {
+    height: 90vh;
+    object-fit: cover;
+}
+
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+}
+
+
+/* Counter styling */
+.counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+section h2 {
+    font-weight: 700;
+}
+
+/* testominial */
+.card-text {
+    font-style: italic;
+}
+
+.card-footer img {
+    object-fit: cover;
+}
+
+
+/* ABOUT.HTML */
+section h2 {
+    font-weight: 700;
+}
+
+img.rounded-circle {
+    object-fit: cover;
+}
+
+/* Features */
+.card-body i {
+    transition: transform 0.3s ease;
+}
+
+.card-body:hover i {
+    transform: scale(1.2);
+}
+
+section h2 {
+    font-weight: 700;
+}
+
+/* Review.html */
+.card-body img {
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+
+
+/* contact.html */
+form input,
+form textarea {
+    border-radius: 10px;
+}
+
+
+/* .gradient-bg {
+  background: linear-gradient(135deg, #6B1E23, #2C0F12);
+  color: white; 
+} */
+
+/* .gradient-bg {
+  background: linear-gradient(135deg, #ffffff, #2C0F12);
+  color: white; 
+} */
+
+.gradient-bg {
+  background: linear-gradient(135deg, #ffffff, #000000); 
+}
+
+.gradienttt-bg {
+  background: linear-gradient(45deg, #000000, #393939); 
+}
+
+
+/* Footerrrrrrr */
+.footer a {
+  cursor: pointer;               /* Pointer on hover */
+  /* transition: color 0.3s ease;    */
+}
+
+.footer a:hover {
+  color: #827cf9 !important;     /* Warning yellow hover color */
+}
+
+
+
+/* loging */
+
+/* Login Page Specific Styles */
+.login-section {
+    background: url('../image/img9.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.login-card .card-body {
+    padding: 2.5rem;
+}
+
+.login-form .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-form .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.login-form label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.login-btn {
+    background: linear-gradient(45deg, #0d6efd, #0a58ca);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(45deg, #0a58ca, #084298);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+}
+
+.login-links {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-links:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-section {
+        padding: 1rem;
+    }
+    
+    .login-card .card-body {
+        padding: 1.5rem;
+    }
+    
+    .login-card {
+        margin: 0 1rem;
+    }
+}
+
+/* Background overlay for better text readability */
+.login-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.login-section {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+/* register */
+
+
+/* Register Page Specific Styles */
+.register-section {
+    background: url('../image/img9.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.register-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.register-section > .container {
+    position: relative;
+    z-index: 2;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register-card .card-body {
+    padding: 2.5rem;
+}
+
+.register-form .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.register-form .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.register-form label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.register-btn {
+    background: linear-gradient(45deg, #198754, #146c43);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background: linear-gradient(45deg, #146c43, #0f5132);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(25, 135, 84, 0.4);
+}
+
+.register-links {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-links:hover {
+    color: #198754;
+    text-decoration: underline;
+}
+
+/* Password validation styling */
+.password-help-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .register-section {
+        padding: 1rem;
+    }
+    
+    .register-card .card-body {
+        padding: 1.5rem;
+    }
+    
+    .register-card {
+        margin: 0 1rem;
+    }
+}
+
+/* Alert styling */
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 0.5rem;
+    color: #dc3545;
+}
+
+.alert-danger p {
+    margin-bottom: 0.5rem;
+}
+
+.alert-danger p:last-child {
+    margin-bottom: 0;
+}

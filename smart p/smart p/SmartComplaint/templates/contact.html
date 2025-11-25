@@ -1,0 +1,52 @@
+{% include 'header.html' with title='Contact' %}
+{% load static %}
+
+<!-- Hero Section -->
+<section class="py-5 gradient-bg text-black">
+    <div class="container">
+        <h1 class="display-5 fw-bold">Contact Us</h1>
+        <p class="lead">We're here to help! Fill the form or reach us via the map below.</p>
+        <hr style="border-top: 2px solid white;">
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section class="pt-5 pb-2 bg-dark text-white">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6">
+                <h3>Send Us a Message</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Message</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Our Location</h3>
+                <!-- Embedded Google Map -->
+                <div class="ratio ratio-4x3 rounded shadow-sm">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114076.22642018274!2d86.12975330168446!3d22.804566901332596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e2ebdb5782f5%3A0x8f348e47e4ed355!2sJamshedpur%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1691254520629!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="bg-primary" style="height: 4px;"></div>
+
+{% include 'footer.html' %}

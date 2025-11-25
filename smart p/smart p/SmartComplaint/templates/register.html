@@ -1,0 +1,180 @@
+{% include 'header.html' with title='Register' %}
+{% load static %}
+
+<style>
+.register-section {
+    background: url('{% static "image/img9.jpg" %}') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.register-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register-card .card-body {
+    padding: 2.5rem;
+}
+
+/* Rest of your register CSS here */
+.register-form .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.register-form .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.register-form label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.register-btn {
+    background: linear-gradient(45deg, #198754, #146c43);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background: linear-gradient(45deg, #146c43, #0f5132);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(25, 135, 84, 0.4);
+}
+
+.register-links {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register-links:hover {
+    color: #198754;
+    text-decoration: underline;
+}
+
+.password-help-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 0.5rem;
+    color: #dc3545;
+}
+
+@media (max-width: 768px) {
+    .register-section {
+        padding: 1rem;
+    }
+    
+    .register-card .card-body {
+        padding: 1.5rem;
+    }
+}
+</style>
+
+<!-- Registration Form -->
+<section class="register-section">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card register-card">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Create Your Account</h3>
+                        
+                        {% if form.errors %}
+                        <div class="alert alert-danger mb-4">
+                            <strong>Please correct the following errors:</strong>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <p class="mb-1">• {{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <p class="mb-1">• {{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <form method="post" class="register-form">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label for="id_username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="id_username" name="username" 
+                                       placeholder="Choose a username" required autocomplete="username">
+                                <div class="password-help-text">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="id_password1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="id_password1" name="password1" 
+                                       placeholder="Create a password" required autocomplete="new-password">
+                                <div class="password-help-text">
+                                    • Your password can't be too similar to your other personal information.<br>
+                                    • Your password must contain at least 8 characters.<br>
+                                    • Your password can't be a commonly used password.<br>
+                                    • Your password can't be entirely numeric.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="id_password2" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="id_password2" name="password2" 
+                                       placeholder="Confirm your password" required autocomplete="new-password">
+                                <div class="password-help-text">Enter the same password as before, for verification.</div>
+                            </div>
+                            
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn register-btn">Create Account</button>
+                            </div>
+                            
+                            <div class="text-center">
+                                <p class="mb-0">
+                                    Already have an account? 
+                                    <a href="{% url 'login' %}" class="register-links">Login here</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}

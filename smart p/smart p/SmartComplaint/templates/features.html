@@ -1,0 +1,85 @@
+{% include 'header.html' with title='Features' %}
+{% load static %}
+
+<!-- Hero Section -->
+<section class="py-5 gradient-bg text-black">
+    <div class="container">
+        <h1 class="display-5 fw-bold">Powerful Features</h1>
+        <p class="lead">Discover what makes our complaint system smart, efficient, and user-friendly.</p>
+        <hr style="border-top: 2px solid white">
+    </div>
+</section>
+
+<!-- Features Cards -->
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Fast Registration</h5>
+                        <p class="card-text">Quick and simple complaint submission with real-time acknowledgment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-tasks fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Track Complaint</h5>
+                        <p class="card-text">Get updates on the progress and status of your registered complaints.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-lock fa-3x text-danger mb-3"></i>
+                        <h5 class="card-title">Secure & Confidential</h5>
+                        <p class="card-text">Your data is encrypted and handled with utmost confidentiality.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-bell fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Instant Alerts</h5>
+                        <p class="card-text">Get email and dashboard notifications instantly for any updates.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-user-friends fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">User-Friendly Interface</h5>
+                        <p class="card-text">Simple and clean layout designed for all age groups and users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Analytics Dashboard</h5>
+                        <p class="card-text">Admin dashboard to view complaint trends and overall performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 gradient-bg text-white text-center">
+    <div class="container text-black">
+        <h2>Start Using the Smart Complaint System Today!</h2>
+        <p class="lead">It's fast, secure, and transparent.</p>
+        <a href="{% url 'register' %}" class="btn btn-light btn-lg mt-3">Register Now</a>
+    </div>
+</section>
+
+{% include 'footer.html' %}
