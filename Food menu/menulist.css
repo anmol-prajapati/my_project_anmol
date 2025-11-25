@@ -1,0 +1,78 @@
+body {
+            background-color: bisque;
+            background-image: url(https://wallpapercave.com/wp/wp3253642.jpg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .heading h1 {
+            color: rgb(182, 153, 208);
+            justify-content: center;
+            display: flex;
+            font-family: cursive;
+            font-size: 45px;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        p {
+            color: rgb(255, 255, 255);
+            font-size: 12px;
+        }
+
+        .menu-item img {
+            height: 150px;
+            width: 150px;
+            border-radius: 20px;
+
+        }
+
+        .menu-grid .menu-item {
+            border: 122px;
+            border-color: white;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+
+        .menu-item {
+            border-radius: 20px;
+            background-color: black;
+            text-align: center;
+            height: 320px;
+            width: 150px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .menu-title {
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+        }
+
+        .menu-price {
+            color: aqua;
+        }
+
+        .menu-item:hover {
+            background-color: rgb(137, 109, 228);
+            opacity: 0.9;
+            transform: scale(1.05);
+        } 
+
+        h2 {
+            color: rgb(141, 134, 133);
+            text-align: center;
+        }
