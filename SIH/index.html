@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-based Animal Type Classification — Demo</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+  <!-- Fixed Navigation Bar -->
+  <nav class="navbar navbar-expand-lg custom-navbar shadow fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="https://cdn-icons-png.flaticon.com/512/1998/1998610.png" alt="Logo" width="55" height="55"
+          class="me-2 rounded-circle">
+        Rashtriya Gokul Mission
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+
+
+  <div class="container">
+    <div class="hero mb-4 shadow-sm hero-scale">
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <h3 class="mb-1">AI-based Animal Type Classification</h3>
+          <p class="mb-1 muted-small">Upload a cattle / buffalo image, get objective body measurements & ATC scores.
+            Demo frontend connected to an ML middleware API.</p>
+          <div class="mt-3">
+            <a href="#uploadSection" class="btn btn-primary me-2"><i class="bi bi-cloud-upload"></i> Start
+              Evaluation</a>
+            <a href="#historySection" class="btn btn-outline-secondary"><i class="bi bi-table"></i> View History</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <small class="text-muted">Team Project • Rashtriya Gokul Mission</small>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Upload / Form Section -->
+    <div id="uploadSection" class="row g-4">
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Upload / Capture Image</h5>
+            <p class="muted-small">Upload a clear side-view photo of the animal. For better accuracy, include the full
+              body from nose to tail.</p>
+
+            <div class="mb-3">
+              <input class="form-control" type="file" id="imageInput" accept="image/*">
+            </div>
+            <div class="mb-3 d-flex gap-2">
+              <button id="btnCapture" class="btn btn-outline-primary"><i class="bi bi-camera"></i> Use Camera</button>
+              <button id="btnPredict" class="btn btn-primary" disabled><i class="bi bi-robot"></i> Analyze
+                (Predict)</button>
+              <button id="btnClear" class="btn btn-light" disabled><i class="bi bi-x-circle"></i> Clear</button>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Preview</label>
+              <div class="position-relative">
+                <canvas id="previewCanvas" class="w-100 preview-canvas" width="800" height="480"></canvas>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <small class="text-muted">Preview supports overlaying detected landmarks from the ML model.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3 shadow-sm">
+          <div class="card-body">
+            <h6 class="card-title">Animal Metadata</h6>
+            <div class="row g-2">
+              <div class="col-6"><input id="animalId" class="form-control" placeholder="Animal ID / Tag"></div>
+              <div class="col-6"><input id="breed" class="form-control" placeholder="Breed"></div>
+              <div class="col-6 mt-2"><input id="age" class="form-control" placeholder="Age (yrs)"></div>
+              <div class="col-6 mt-2">
+                <select id="gender" class="form-select">
+                  <option value="Cow">Cow</option>
+                  <option value="Buffalo">Buffalo</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-3 d-flex gap-2">
+              <button id="btnSaveLocal" class="btn btn-success" disabled><i class="bi bi-save"></i> Save Record
+                (Local)</button>
+              <button id="btnExport" class="btn btn-outline-secondary" disabled><i
+                  class="bi bi-file-earmark-arrow-down"></i> Export JSON</button>
+              <button id="btnSendBPA" class="btn btn-primary" disabled><i class="bi bi-cloud-arrow-up"></i> Send to
+                BPA</button>
+            </div>
+
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Column -->
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">AI Analysis Results</h5>
+            <div id="resultsArea">
+              <p class="muted-small">No prediction yet. Upload an image and click <strong>Analyze</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3 shadow-sm">
+          <div class="card-body">
+            <h6 class="card-title">Detected Landmarks (visual)</h6>
+            <p class="muted-small">The canvas overlay shows landmark positions and connections when available.</p>
+            <div id="landmarkLegend" class="small text-muted"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Carousel Section -->
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://images.pexels.com/photos/422218/pexels-photo-422218.jpeg?cs=srgb&dl=pexels-matthiaszomer-422218.jpg&fm=jpg"
+            class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+            <h5>Automated Animal Type Classification:</h5>
+            <p>From Image Capture to Scientific Insights in Seconds.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/038/971/338/small_2x/ai-generated-modern-outdoor-cowshed-at-dairy-farm-with-herd-of-milking-holstein-cows-eating-hay-from-manger-photo.jpg"
+            class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+            <h5>Revolutionizing Dairy Farming:</h5>
+            <p>Accurate, AI-Powered Body Evaluation for Cattle and Buffaloes.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661931727314-a0b62e77b22e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2F0dGxlJTIwZmFybXxlbnwwfHwwfHx8MA%3D%3D"
+            class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+            <h5>Empowering Farmers and Breeders:</h5>
+            <p>Smart Decisions Backed by Data, Not Guesswork.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- History Section -->
+    <div id="historySection" class="card mt-4 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Evaluation History</h5>
+        <div class="table-responsive">
+          <table class="table table-sm" id="historyTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Animal ID</th>
+                <th>Date</th>
+                <th>Key Measurements</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="mt-2">
+          <button id="btnClearHistory" class="btn btn-outline-danger btn-sm">Clear History</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <!-- Footer -->
+  <footer class="footer mt-auto gradienttt-bg text-white pt-5 pb-4">
+    <div class="container text-center text-md-left">
+      <div class="row">
+
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Rashtriya Gokul Mission</h5>
+          <p>Revolutionizing Dairy Farming: Accurate, AI-Powered Body Evaluation for Cattle and Buffaloes.</p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Pages</h5>
+          <p><a href="index.html" class="text-white text-decoration-none">Home</a></p>
+          <p><a href="about.html" class="text-white text-decoration-none">About</a></p>
+          <p><a href="features.html" class="text-white text-decoration-none">Features</a></p>
+          <p><a href="contact.html" class="text-white text-decoration-none">Contact</a></p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Useful Links</h5>
+          <p><a href="#" class="text-white text-decoration-none">Support</a></p>
+          <p><a href="#" class="text-white text-decoration-none">Help</a></p>
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
+          <p><i class="fas fa-home mr-3"></i> Bhubaneswar, Odisha</p>
+          <p><i class="fas fa-envelope mr-3"></i> RashtriyaGokulMission55@gmail.com</p>
+          <p><i class="fas fa-phone mr-3"></i> +91 9234395471</p>
+        </div>
+
+      </div>
+
+      <hr class="mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-7 col-lg-8">
+          <p>© 2025 Smart Complaint System | All rights reserved</p>
+        </div>
+        <div class="col-md-5 col-lg-4">
+          <div class="text-center text-md-right">
+            <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="btn btn-outline-light btn-floating m-1"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS + Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ---------------------------
+       Configuration (Edit these)
+       --------------------------- */
+    const API_BASE = 'https://your-middleware.example.com'; // <-- set your middleware base URL
+    const PREDICT_ENDPOINT = API_BASE + '/predict-scores';
+    const UPLOAD_ENDPOINT = API_BASE + '/upload-image';
+    const SAVE_ENDPOINT = API_BASE + '/save-atc';
+    const AUTH_TOKEN = ''; // optional: Bearer token for authenticated APIs
+
+    /* ---------------------------
+       Utility & State
+       --------------------------- */
+    let selectedFile = null;
+    let currentRecord = null; // object with image, metadata, predictions
+    let history = JSON.parse(localStorage.getItem('ai_atc_history') || '[]');
+
+    const previewCanvas = document.getElementById('previewCanvas');
+    const ctx = previewCanvas.getContext('2d');
+
+    function bytesToMB(bytes) { return (bytes / 1024 / 1024).toFixed(2) }
+
+    /* ---------------------------
+       Init UI
+       --------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('imageInput').addEventListener('change', handleFileSelect);
+      document.getElementById('btnPredict').addEventListener('click', analyzeImage);
+      document.getElementById('btnClear').addEventListener('click', clearSelection);
+      document.getElementById('btnSaveLocal').addEventListener('click', saveLocalRecord);
+      document.getElementById('btnExport').addEventListener('click', exportCurrentJSON);
+      document.getElementById('btnSendBPA').addEventListener('click', sendToBPA);
+      document.getElementById('btnClearHistory').addEventListener('click', clearHistory);
+      document.getElementById('btnCapture').addEventListener('click', startCameraCapture);
+      renderHistory();
+    });
+
+    /* ---------------------------
+       File / Camera Handling
+       --------------------------- */
+    function handleFileSelect(ev) {
+      const file = ev.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) { alert('Please upload an image file'); return }
+      if (file.size > 10 * 1024 * 1024) { if (!confirm('File is large (' + bytesToMB(file.size) + ' MB). Proceed?')) return }
+      selectedFile = file;
+      drawImageToCanvas(file);
+      enableControls(true);
+    }
+
+    function drawImageToCanvas(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          // resize canvas to maintain aspect
+          const maxW = 800; const maxH = 480;
+          let w = img.width, h = img.height;
+          const ratio = Math.min(maxW / w, maxH / h, 1);
+          previewCanvas.width = Math.round(w * ratio);
+          previewCanvas.height = Math.round(h * ratio);
+          ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+          ctx.drawImage(img, 0, 0, previewCanvas.width, previewCanvas.height);
+          // save current base64 for record
+          currentRecord = { imageData: previewCanvas.toDataURL('image/jpeg', 0.9) };
+        }
+        img.src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+
+    async function startCameraCapture() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        const video = document.createElement('video');
+        video.autoplay = true; video.playsInline = true; video.srcObject = stream;
+
+        const modal = new bootstrap.Modal(createCameraModal(video));
+        modal.show();
+      } catch (e) { alert('Camera access denied or not available') }
+    }
+
+    function createCameraModal(video) {
+      const modalEl = document.createElement('div');
+      modalEl.className = 'modal';
+      modalEl.tabIndex = -1;
+      modalEl.innerHTML = `
+    <div class="modal-dialog modal-fullscreen-sm-down modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-0 position-relative">
+          <div id="videoContainer" class="w-100 h-100 bg-dark d-flex align-items-center justify-content-center"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="captureFrame" type="button" class="btn btn-primary">Capture</button>
+        </div>
+      </div>
+    </div>`;
+      document.body.appendChild(modalEl);
+      const container = modalEl.querySelector('#videoContainer');
+      video.style.maxHeight = '85vh'; video.style.width = '100%';
+      container.appendChild(video);
+      modalEl.querySelector('#captureFrame').addEventListener('click', () => {
+        // draw current frame to canvas
+        const tmpCanvas = document.createElement('canvas');
+        tmpCanvas.width = video.videoWidth; tmpCanvas.height = video.videoHeight;
+        tmpCanvas.getContext('2d').drawImage(video, 0, 0);
+        // stop stream
+        const tracks = video.srcObject.getTracks(); tracks.forEach(t => t.stop());
+        // set preview
+        const dataURL = tmpCanvas.toDataURL('image/jpeg', 0.9);
+        const img = new Image(); img.onload = () => {
+          previewCanvas.width = Math.min(800, img.width);
+          previewCanvas.height = Math.min(480, img.height * (previewCanvas.width / img.width));
+          ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+          ctx.drawImage(img, 0, 0, previewCanvas.width, previewCanvas.height);
+          currentRecord = { imageData: previewCanvas.toDataURL('image/jpeg', 0.9) };
+          enableControls(true);
+          // close modal
+          bootstrap.Modal.getInstance(modalEl).hide();
+          modalEl.remove();
+        }
+        img.src = dataURL;
+      });
+      modalEl.addEventListener('hidden.bs.modal', () => { modalEl.remove(); });
+      return modalEl;
+    }
+
+    function clearSelection() {
+      ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+      selectedFile = null; currentRecord = null;
+      document.getElementById('imageInput').value = '';
+      enableControls(false);
+      document.getElementById('resultsArea').innerHTML = '<p class="muted-small">No prediction yet. Upload an image and click <strong>Analyze</strong>.</p>';
+    }
+
+    function enableControls(enabled) {
+      document.getElementById('btnPredict').disabled = !enabled;
+      document.getElementById('btnClear').disabled = !enabled;
+      document.getElementById('btnSaveLocal').disabled = !enabled;
+      document.getElementById('btnExport').disabled = !enabled;
+      document.getElementById('btnSendBPA').disabled = !enabled || !API_BASE || API_BASE.includes('your-middleware');
+    }
+
+    /* ---------------------------
+       Prediction / ML Communication
+       --------------------------- */
+    async function analyzeImage() {
+      if (!currentRecord || !currentRecord.imageData) { alert('No image available'); return }
+      const animalId = document.getElementById('animalId').value || 'UNKNOWN';
+
+      // Try real API if configured, else fallback to mock
+      if (API_BASE && !API_BASE.includes('your-middleware')) {
+        try {
+          showLoading(true, 'Sending image to ML middleware...');
+          // Convert dataURL to Blob
+          const blob = dataURLToBlob(currentRecord.imageData);
+          const form = new FormData();
+          form.append('image', blob, (animalId || 'animal') + '.jpg');
+          form.append('animal_id', animalId);
+          form.append('breed', document.getElementById('breed').value || '');
+          form.append('age', document.getElementById('age').value || '');
+          form.append('gender', document.getElementById('gender').value || '');
+
+          const res = await fetch(PREDICT_ENDPOINT, {
+            method: 'POST', body: form, headers: AUTH_TOKEN ? { 'Authorization': 'Bearer ' + AUTH_TOKEN } : {}
+          });
+          if (!res.ok) throw new Error('Middleware returned ' + res.status);
+          const json = await res.json();
+          handlePredictionResponse(json);
+        } catch (err) {
+          console.error(err); showLoading(false);
+          alert('Error calling ML middleware: ' + err.message + "\nFalling back to mock prediction.");
+          const mock = mockPredict(); handlePredictionResponse(mock);
+        }
+      } else {
+        const mock = mockPredict(); handlePredictionResponse(mock);
+      }
+    }
+
+    function dataURLToBlob(dataURL) {
+      const parts = dataURL.split(',');
+      const mime = parts[0].match(/:(.*?);/)[1];
+      const bstr = atob(parts[1]);
+      let n = bstr.length; const u8arr = new Uint8Array(n);
+      while (n--) u8arr[n] = bstr.charCodeAt(n);
+      return new Blob([u8arr], { type: mime });
+    }
+
+    function handlePredictionResponse(json) {
+      showLoading(false);
+      // Expected JSON structure (example):
+      // { measurements: {body_length:132.5, height_withers:128, chest_width:54, rump_angle:21}, confidences:{...}, landmarks:[{x:0.12,y:0.45}, ...] }
+      const measurements = json.measurements || {};
+      const confidences = json.confidences || {};
+      const landmarks = json.landmarks || [];
+
+      currentRecord = { ...currentRecord, metadata: getMetadata(), measurements, confidences, landmarks, date: new Date().toISOString() };
+      renderResults(currentRecord);
+      overlayLandmarks(landmarks);
+    }
+
+    function mockPredict() {
+      // returns normalized coords (x,y in [0..1]) relative to the image canvas
+      return {
+        measurements: { body_length: 132.4, height_withers: 128.0, chest_width: 54.2, rump_angle: 21.3 },
+        confidences: { body_length: 0.95, height_withers: 0.93, chest_width: 0.89, rump_angle: 0.90 },
+        landmarks: [{ x: 0.12, y: 0.45 }, { x: 0.25, y: 0.30 }, { x: 0.52, y: 0.28 }, { x: 0.74, y: 0.33 }, { x: 0.90, y: 0.47 }]
+      };
+    }
+
+    function renderResults(record) {
+      const m = record.measurements || {};
+      const c = record.confidences || {};
+      const html = `
+    <div class="row">
+      <div class="col-6 mb-2"><div class="p-2 border rounded bg-white">
+        <div class="muted-small">Body Length</div>
+        <div class="result-value">${m.body_length ?? '-'} cm <small class="text-muted">(${(c.body_length || 0) * 100 || ''}%)</small></div>
+      </div></div>
+
+      <div class="col-6 mb-2"><div class="p-2 border rounded bg-white">
+        <div class="muted-small">Height @ Withers</div>
+        <div class="result-value">${m.height_withers ?? '-'} cm <small class="text-muted">(${(c.height_withers || 0) * 100 || ''}%)</small></div>
+      </div></div>
+
+      <div class="col-6 mb-2"><div class="p-2 border rounded bg-white">
+        <div class="muted-small">Chest Width</div>
+        <div class="result-value">${m.chest_width ?? '-'} cm <small class="text-muted">(${(c.chest_width || 0) * 100 || ''}%)</small></div>
+      </div></div>
+
+      <div class="col-6 mb-2"><div class="p-2 border rounded bg-white">
+        <div class="muted-small">Rump Angle</div>
+        <div class="result-value">${m.rump_angle ?? '-'}° <small class="text-muted">(${(c.rump_angle || 0) * 100 || ''}%)</small></div>
+      </div></div>
+
+      <div class="col-12 mt-2"><div class="p-2 bg-light border rounded small">
+        <strong>Animal:</strong> ${record.metadata.animalId || 'N/A'} • <strong>Breed:</strong> ${record.metadata.breed || 'N/A'} • <strong>Date:</strong> ${new Date(record.date).toLocaleString()}
+      </div></div>
+    </div>`;
+      document.getElementById('resultsArea').innerHTML = html;
+    }
+
+    function overlayLandmarks(landmarks) {
+      // redraw image then overlay
+      const img = new Image(); img.onload = () => {
+        ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+        ctx.drawImage(img, 0, 0, previewCanvas.width, previewCanvas.height);
+        if (!landmarks || !landmarks.length) return;
+        ctx.save();
+        ctx.lineWidth = 2; ctx.strokeStyle = '#ff5722'; ctx.fillStyle = '#ff5722';
+        // draw points
+        for (let i = 0; i < landmarks.length; i++) {
+          const p = landmarks[i];
+          const x = p.x * previewCanvas.width; const y = p.y * previewCanvas.height;
+          ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+          // label
+          ctx.font = '12px Arial'; ctx.fillStyle = '#222'; ctx.fillText(String(i + 1), x + 6, y - 6);
+        }
+        // optional: connect points
+        ctx.beginPath(); ctx.moveTo(landmarks[0].x * previewCanvas.width, landmarks[0].y * previewCanvas.height);
+        for (let i = 1; i < landmarks.length; i++) ctx.lineTo(landmarks[i].x * previewCanvas.width, landmarks[i].y * previewCanvas.height);
+        ctx.stroke();
+        ctx.restore();
+        // legend
+        document.getElementById('landmarkLegend').innerHTML = 'Showing ' + landmarks.length + ' landmarks (indexes shown).';
+      };
+      img.src = currentRecord.imageData;
+    }
+
+    /* ---------------------------
+       Local Storage / History
+       --------------------------- */
+    function getMetadata() {
+      return { animalId: document.getElementById('animalId').value, breed: document.getElementById('breed').value, age: document.getElementById('age').value, gender: document.getElementById('gender').value };
+    }
+
+    function saveLocalRecord() {
+      if (!currentRecord) { alert('No record to save'); return }
+      const rec = { ...currentRecord };
+      history.unshift(rec);
+      localStorage.setItem('ai_atc_history', JSON.stringify(history));
+      renderHistory();
+      alert('Saved locally in browser history.');
+    }
+
+    function renderHistory() {
+      const tbody = document.querySelector('#historyTable tbody'); tbody.innerHTML = '';
+      history.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${r.metadata?.animalId || 'N/A'}</td>
+      <td>${new Date(r.date).toLocaleString()}</td>
+      <td>${r.measurements ? 'BL:' + r.measurements.body_length + 'cm, H:' + r.measurements.height_withers + 'cm' : '—'}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" onclick='viewRecord(${i})'>View</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick='downloadRecord(${i})'>Download</button>
+      </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function viewRecord(index) {
+      const r = history[index]; if (!r) return;
+      // show image and measurements
+      currentRecord = r; drawImageFromDataURL(r.imageData); renderResults(r); overlayLandmarks(r.landmarks || []); enableControls(true);
+    }
+
+    function drawImageFromDataURL(dataURL) {
+      const img = new Image(); img.onload = () => {
+        previewCanvas.width = Math.min(800, img.width);
+        previewCanvas.height = Math.min(480, img.height * (previewCanvas.width / img.width));
+        ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+        ctx.drawImage(img, 0, 0, previewCanvas.width, previewCanvas.height);
+      }
+      img.src = dataURL;
+    }
+
+    function downloadRecord(index) {
+      const r = history[index]; if (!r) return;
+      const blob = new Blob([JSON.stringify(r, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `atc_record_${index + 1}.json`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    function exportCurrentJSON() {
+      if (!currentRecord) { alert('No record'); return }
+      const blob = new Blob([JSON.stringify(currentRecord, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = `atc_record_export_${Date.now()}.json`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    function clearHistory() { if (!confirm('Clear local history?')) return; history = []; localStorage.removeItem('ai_atc_history'); renderHistory(); }
+
+    /* ---------------------------
+       Sending to BPA / Middleware Save (example)
+       --------------------------- */
+    async function sendToBPA() {
+      if (!currentRecord) { alert('No record'); return }
+      if (API_BASE && API_BASE.includes('your-middleware')) { alert('Please configure API_BASE at top of the script before using Send to BPA.'); return }
+      try {
+        showLoading(true, 'Sending record to middleware...');
+        const form = new FormData();
+        const blob = dataURLToBlob(currentRecord.imageData);
+        form.append('image', blob, (currentRecord.metadata?.animalId || 'animal') + '.jpg');
+        form.append('animal_id', currentRecord.metadata?.animalId || '');
+        form.append('measurements', JSON.stringify(currentRecord.measurements || {}));
+        form.append('landmarks', JSON.stringify(currentRecord.landmarks || []));
+        form.append('metadata', JSON.stringify(currentRecord.metadata || {}));
+
+        const res = await fetch(SAVE_ENDPOINT, { method: 'POST', body: form, headers: AUTH_TOKEN ? { 'Authorization': 'Bearer ' + AUTH_TOKEN } : {} });
+        if (!res.ok) throw new Error('Middleware responded ' + res.status);
+        const j = await res.json();
+        showLoading(false);
+        alert('Sent to middleware / BPA successfully. Response: ' + JSON.stringify(j));
+      } catch (err) { showLoading(false); alert('Error: ' + err.message); }
+    }
+
+    /* ---------------------------
+       Helpers
+       --------------------------- */
+    function showLoading(on, text = '') { if (on) { document.getElementById('resultsArea').innerHTML = `<div class="d-flex align-items-center"><strong>Processing...</strong><div class="spinner-border ms-3" role="status" aria-hidden="true"></div><div class="ms-3 text-muted small">${text}</div></div>`; } }
+
+  </script>
+</body>
+
+</html>

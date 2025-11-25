@@ -1,0 +1,157 @@
+:root {
+  --brand: #0d6efd
+}
+
+body {
+  background: linear-gradient(100deg, #bfe9fc 0%, #caffca 50%, #fdc9c9 100%);
+  padding-top: 80px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* nav */
+.custom-navbar {
+  background: linear-gradient(45deg,
+      #87CEEB,
+      /* Light Sky Blue - representing the sky */
+      #B0E0E6,
+      /* Powder Blue - soft sky transition */
+      #98FB98,
+      /* Pale Green - distant fields */
+      #81cd35,
+      /* Lawn Green - vibrant field color */
+
+      #F5F5DC,
+      /* Beige - dry grass/earth tones */
+      #F5DEB3,
+      /* Wheat - golden field highlights */
+      #FFFFFF,
+      /* White - representing white cattle markings */
+      #696969,
+      /* Dim Gray - representing dark cattle */
+      #2F4F4F
+      /* Dark Slate Gray - shadow accents */
+    );
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link,
+.custom-navbar .nav-link i {
+  color: #000000 !important;
+  /* Bright Yellow */
+  font-weight: 500;
+  text-decoration: none !important;
+  /* Remove underline */
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar {
+  color: #ffffff !important;
+  /* Light Yellow on hover/active */
+  text-decoration: none !important;
+  /* Still no underline */
+}
+
+.hero {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.08), rgba(253, 13, 209, 0.02));
+  padding: 2rem;
+  border-radius: .5rem
+}
+
+.preview-canvas {
+  border: 1px solid #e1e5ea;
+  border-radius: .375rem;
+  background: #fff
+}
+
+.landmark-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.muted-small {
+  font-size: .9rem;
+  color: #6c757d
+}
+
+.result-value {
+  font-weight: 600;
+  font-size: 1.05rem
+}
+
+footer {
+  font-size: .9rem;
+  color: #6c757d
+}
+
+@media (max-width:576px) {
+  .hero {
+    padding: 1rem
+  }
+}
+
+/* cousrel */
+.carousel-item img {
+  height: 80vh;
+  object-fit: cover;
+}
+
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+}
+
+.hero-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-scale:hover {
+  transform: scale(1.03);
+  /* slightly zoom in on hover */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  /* slightly stronger shadow */
+}
+
+
+.gradient-bg {
+  background: linear-gradient(135deg, #ffffff, #000000);
+}
+
+.gradienttt-bg {
+  background: linear-gradient(45deg, #000000, #393939);
+}
+
+
+/* Footerrrrrrr */
+.footer a {
+  cursor: pointer;
+  /* Pointer on hover */
+  /* transition: color 0.3s ease;    */
+}
+
+.footer a:hover {
+  color: #827cf9 !important;
+  /* Warning yellow hover color */
+}
+
+/* Features */
+.card-body i {
+    transition: transform 0.3s ease;
+}
+
+.card-body:hover i {
+    transform: scale(1.2);
+}
+
+section h2 {
+    font-weight: 700;
+}
